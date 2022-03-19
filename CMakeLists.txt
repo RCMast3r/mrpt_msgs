@@ -8,6 +8,9 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
 
 
 rosidl_generate_interfaces(${PROJECT_NAME}
@@ -29,6 +32,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   msg/SingleRangeBearingObservation.msg
   # Services:
   srv/GetCMGraph.srv
+  DEPENDENCIES std_msgs geometry_msgs sensor_msgs # https://answers.ros.org/question/326008/ros2-run-symbol-not-found-on-custom-msg/
   )
 
 if(BUILD_TESTING)
